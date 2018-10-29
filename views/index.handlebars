@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>TEST</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+    {{!-- Use this font: https://github.com/kylewelsby/dotsfont --}}
+    <h1>Move when submitting form</h1>
+    <form id="form6" action="/" method="post">
+        <label>Username</label>
+        <input type="text" id="{{ randomGuid2 }}" name="{{ randomGuid2 }}">
+        <label>Password</label>
+        <input type="text" id="{{ randomGuid1 }}" name="{{ randomGuid1 }}" style="-webkit-text-security: disc;">
+        <button type="submit">SUBMIT</button>
+        <input type="hidden" id="username" name="username">
+        <input type="hidden" id="password" name="password">
+    </form>
+    <script>
+        $( "#form6" ).submit(function( event ) {
+            $("#username").val($("#{{ randomGuid2 }}").val());
+            $("#{{ randomGuid2 }}").val("");
+
+            $("#password").val($("#{{ randomGuid1 }}").val());
+            $("#{{ randomGuid1 }}").val("");
+        });
+    </script>
+
+    <h1>Last request body params</h1>
+    <pre>{{ bodyParameters }}</pre>
+</body>
+</html>
